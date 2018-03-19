@@ -1,2 +1,2 @@
-apt-get install git
-apt-get install curl
+apt-get install -y git
+apt-get install -y curl

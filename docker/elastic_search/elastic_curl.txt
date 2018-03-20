@@ -1,0 +1,283 @@
+    1  sudo mv robo3t_ /usr/bin
+    2  rename
+    3  sudo rename /usr/bin/robo3t_ /usr/bin/robo3t
+    4  robo3t
+    5  cd ..
+    6  mv robo3t_ robo3t
+    7  sudo mv robo3t_ robo3t
+    8  robo3t
+    9  ls | grep robo
+   10  ls
+   11  mkdir Code
+   12  sudo apt-get install git
+   13  cd Code
+   14  ls
+   15  git clone https://github.com/matt20013/ubuntu_dev_environment.git
+   16  ls
+   17  cd ubuntu_dev_environment/
+   18  ls
+   19  sudo ./chrome.sh 
+   20  .\anaconda.sh
+   21  ls
+   22  .anaconda3.sh
+   23  ./anaconda3.sh
+   24  ./general.sh 
+   25  gedit README.md
+   26  ./anaconda3.sh 
+   27  sudo ./general.sh 
+   28  gedit general.sh 
+   29  git status 
+   30  git add .
+   31  git commit -a -m "Updated readme"
+   32  git config --global user.email "Matt Hodgskiss"
+   33  git config --global user.email "Matthew.Hodgskiss@md.catapult.org.uk"
+   34  git commit -a -m "Updated readme"
+   35  git push
+   36  ./anaconda3.sh 
+   37  cd ..
+   38  ls
+   39  cd ~/Code/ubuntu_dev_environment/
+   40  ls
+   41  ./pycharm.sh 
+   42  gedit README.md 
+   43  ./robo3t.sh 
+   44  robo3t
+   45  /usr/bin/robo3t/bin/robo3t 
+   46  $PATH
+   47  ssh-keygen -t rsa -C "matthew.hodgskiss@md.catapult.org.uk" -b 4096
+   48  sudo apt-get install xclip
+   49  xclip -sel clip < ~/.ssh/id_rsa.pub
+   50  cd Code/ubuntu_dev_environment/
+   51  touch docker-kibana.sh
+   52  gedit docker-kibana.sh 
+   53  nautilus
+   54  nautilus .
+   55  gedit docker-kibana.sh 
+   56  docker pull docker.elastic.co/kibana/kibana:6.2.2
+   57  sudo docker pull docker.elastic.co/kibana/kibana:6.2.2
+   58  cat docker-elastic-search.sh 
+   59  sudo docker ps -a
+   60  cd Code/ubuntu_dev_environment/
+   61  ls
+   62  cd docker/
+   63  cd elastic_search/
+   64  ls
+   65  sudo ./docker-kibana.sh
+   66  cat docker-kibana.sh 
+   67  curl -s http://localhost:9200/.kibana/_recovery?pretty
+   68  ls
+   69  curl XPUT localhost:9200/.kibana
+   70  curl -XPOST 'localhost:9200/website/blog/?pretty' -H 'Content-Type: application/json' -d'
+{
+  "title": "My second blog entry",
+  "text":  "Still trying this out...",
+  "date":  "2014/01/01"
+}
+'
+   71  PUT /website/blog/123
+   72  {   "title": "My first blog entry",;   "text":  "Just trying this out...",;   "date":  "2014/01/01"; }
+   73  curl -XPUT 'localhost:9200/website/blog/123?pretty' -H 'Content-Type: application/json' -d'
+{
+  "title": "My first blog entry",
+  "text":  "Just trying this out...",
+  "date":  "2014/01/01"
+}
+'
+   74  curl -XGET 'localhost:9200/website/blog/123?pretty&pretty'
+   75  curl -XGET 'localhost:9200/website/blog/123?_source=title,text&pretty'
+   76  history
+   77  history | grep curl
+   78  curl -XGET 'localhost:9200/website/blog/123/_source?pretty'
+   79  curl -i -XHEAD http://localhost:9200/website/blog/123
+   80  curl -i -XHEAD http://localhost:9200/website/blog/124
+   81  PUT /website/blog/123
+   82  {   "title": "My first blog entry",;   "text":  "I am starting to get the hang of this...",;   "date":  "2014/01/02"; }
+   83  curl -XPUT 'localhost:9200/website/blog/123?pretty' -H 'Content-Type: application/json' -d'
+{
+  "title": "My first blog entry",
+  "text":  "I am starting to get the hang of this...",
+  "date":  "2014/01/02"
+}
+'
+   84  curl -XDELETE 'localhost:9200/website/blog/123?pretty'
+   85  curl -XPUT 'localhost:9200/website/blog/1/_create?pretty' -H 'Content-Type: application/json' -d'
+{
+  "title": "My first blog entry",
+  "text":  "Just trying this out..."
+}
+'
+   86  curl -XGET 'localhost:9200/website/blog/1?pretty'
+   87  curl -XPUT 'localhost:9200/website/blog/1?version=1&pretty' -H 'Content-Type: application/json' -d'
+{
+  "title": "My first blog entry",
+  "text":  "Starting to get the hang of this..."
+}
+'
+   88  curl -XPUT 'localhost:9200/website/blog/1?version=1&pretty' -H 'Content-Type: application/json' -d'
+{
+  "title": "My first blog entry",
+  "text":  "Starting to get the hang of this..."
+}
+'
+   89  curl -XGET 'localhost:9200/_mget?pretty' -H 'Content-Type: application/json' -d'
+{
+   "docs" : [
+      {
+         "_index" : "website",
+         "_type" :  "blog",
+         "_id" :    2
+      },
+      {
+         "_index" : "website",
+         "_type" :  "pageviews",
+         "_id" :    1,
+         "_source": "views"
+      }
+   ]
+}
+'
+   90  curl -XGET 'localhost:9200/website/blog/_mget?pretty' -H 'Content-Type: application/json' -d'
+{
+   "docs" : [
+      { "_id" : 2 },
+      { "_type" : "pageviews", "_id" :   1 }
+   ]
+}
+'
+   91  curl -XGET 'localhost:9200/_search?pretty'
+   92  curl -XPOST 'localhost:9200/my_store/products/_bulk?pretty' -H 'Content-Type: application/json' -d'
+{ "index": { "_id": 1 }}
+{ "price" : 10, "productID" : "XHDK-A-1293-#fJ3" }
+{ "index": { "_id": 2 }}
+{ "price" : 20, "productID" : "KDKE-B-9947-#kL5" }
+{ "index": { "_id": 3 }}
+{ "price" : 30, "productID" : "JODL-X-1937-#pV7" }
+{ "index": { "_id": 4 }}
+{ "price" : 30, "productID" : "QQPX-R-3956-#aD8" }
+'
+   93  curl -XGET 'localhost:9200/my_store/products/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+    "query" : {
+        "constant_score" : { 
+            "filter" : {
+                "term" : { 
+                    "price" : 20
+                }
+            }
+        }
+    }
+}
+'
+   94  curl -XGET 'localhost:9200/my_store/products/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+    "query" : {
+        "constant_score" : {
+            "filter" : {
+                "term" : {
+                    "productID" : "XHDK-A-1293-#fJ3"
+                }
+            }
+        }
+    }
+}
+'
+   95  curl -XGET 'localhost:9200/my_store/_analyze?pretty' -H 'Content-Type: application/json' -d'
+{
+  "field": "productID",
+  "text": "XHDK-A-1293-#fJ3"
+}
+'
+   96  curl -XDELETE 'localhost:9200/my_store?pretty'
+   97  curl -XPUT 'localhost:9200/my_store?pretty' -H 'Content-Type: application/json' -d'
+{
+    "mappings" : {
+        "products" : {
+            "properties" : {
+                "productID" : {
+                    "type" : "string",
+                    "index" : "not_analyzed" 
+                }
+            }
+        }
+    }
+'
+   98  curl -XDELETE 'localhost:9200/my_store?pretty'
+   99  curl -XPUT 'localhost:9200/my_store?pretty' -H 'Content-Type: application/json' -d'
+{
+    "mappings" : {
+        "products" : {
+            "properties" : {
+                "productID" : {
+                    "type" : "string",
+                    "index" : "not_analyzed" 
+                }
+            }
+        }
+    }
+'
+  100  curl -XPUT 'localhost:9200/my_store?pretty' -H 'Content-Type: application/json' -d'
+{
+    "mappings" : {
+        "products" : {
+            "properties" : {
+                "productID" : {
+                    "type" : "string",
+                    "index" : "not_analyzed" 
+                }
+            }
+        }
+    }
+}'
+  101  curl -XPUT 'localhost:9200/my_store?pretty' -H 'Content-Type: application/json' -d'
+{
+    "mappings" : {
+        "products" : {
+            "properties" : {
+                "productID" : {
+                    "type" : "string",
+                    "index" : "not_analyzed" 
+                }
+            }
+        }
+    }
+}'
+  102  curl -XPUT 'localhost:9200/my_store?pretty' -H 'Content-Type: application/json' -d'
+{
+    "mappings" : {
+        "products" : {
+            "properties" : {
+                "productID" : {
+                    "type" : "string",
+                    "index" : "not_analyzed" 
+                }
+            }
+        }
+    }
+}'
+  103  curl -XPUT 'localhost:9200/my_store?pretty' -H 'Content-Type: application/json' -d'
+{
+    "mappings" : {
+        "products" : {
+            "properties" : {
+                "productID" : {
+                    "type" : "string",
+                    "index" : "not_analyzed" 
+                }
+            }
+        }
+    }
+}'
+  104  curl -XPUT 'localhost:9200/my_store?pretty' -H 'Content-Type: application/json' -d'
+{
+    "mappings" : {
+        "products" : {
+            "properties" : {
+                "productID" : {
+                    "type" : "text",
+                    "index" : "not_analyzed" 
+                }
+            }
+        }
+    }
+}'
+  105  history > elastic_curl.txt

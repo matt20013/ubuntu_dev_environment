@@ -3,4 +3,9 @@
 sudo ./general
 installs git and curl
 
-./anaconda3.sh
+./anaconda3.sh 
+Sudo not required
+./pycharm.sh
+Sudo not required
+
+
